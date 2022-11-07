@@ -23,7 +23,7 @@ class AuthorRepositoryTest {
         //given
         Author a = new Author();
         //when
-        authorRepository.creatAuthor(a);
+        authorRepository.createAuthor(a);
         //then
         assertNotNull(a.getId());
     }
@@ -41,9 +41,9 @@ class AuthorRepositoryTest {
     @Test
     void Should_deleteAuthorWithCorrectInput() {
         //given
-        authorRepository.creatAuthor(new Author());
-        authorRepository.creatAuthor(new Author());
-        authorRepository.creatAuthor(new Author());
+        authorRepository.createAuthor(new Author());
+        authorRepository.createAuthor(new Author());
+        authorRepository.createAuthor(new Author());
         //when
         authorRepository.deleteAuthor(0L);
         //then
@@ -53,7 +53,7 @@ class AuthorRepositoryTest {
     @Test
     void Should_getAuthorByIdWithProperInput() {
         //given
-        authorRepository.creatAuthor(new Author());
+        authorRepository.createAuthor(new Author());
         //when
         Author a = authorRepository.getAuthorById(0L);
         //then

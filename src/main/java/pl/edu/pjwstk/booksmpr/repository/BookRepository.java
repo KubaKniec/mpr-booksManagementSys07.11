@@ -6,7 +6,7 @@ import pl.edu.pjwstk.booksmpr.model.Book;
 import java.util.HashMap;
 import java.util.List;
 
-
+@Repository
 public class BookRepository {
 
     private HashMap<Long, Book> bookHashMap = new HashMap<>();
