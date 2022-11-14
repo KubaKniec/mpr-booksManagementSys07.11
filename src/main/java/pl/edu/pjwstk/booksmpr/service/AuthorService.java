@@ -1,11 +1,13 @@
 package pl.edu.pjwstk.booksmpr.service;
 
+import com.sun.source.tree.OpensTree;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.edu.pjwstk.booksmpr.model.Author;
 import pl.edu.pjwstk.booksmpr.repository.AuthorRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AuthorService {
@@ -18,18 +20,26 @@ public class AuthorService {
     }
 
     public Author createAuthor(Author author){
-        return authorRepository.createAuthor(author);
+        return authorRepository.save(author);
     }
 
     public List<Author> getAllAuthors(){
-        return authorRepository.getAllAuthors();
+        return authorRepository.findAll();
     }
 
     public Author getAuthorById(Long id){
-        return authorRepository.getAuthorById(id);
+        return authorRepository.getReferenceById(id);
+    }
+
+    public Author findAuthorByNameAndLastName(String firstName, String lastName){
+        Optional<Author> author = authorRepository.findAuthorByFirstNameAndLastName(firstName,lastName);
+        if (author.isPresent()){
+            return author.get();
+        }
+        throw new IllegalArgumentException();
     }
 
     public void deleteAuthorById(Long id){
-        authorRepository.deleteAuthor(id);
+        authorRepository.deleteById(id);
     }
 }

@@ -34,7 +34,7 @@ public class BookController {
         return ResponseEntity.ok(bookService.getBookById(id));
     }
 
-    @GetMapping("/get")
+    @GetMapping("/get/")
     public ResponseEntity<Book> getBookByIdRequestParam(@RequestParam(name = "id") Long id){
         return ResponseEntity.ok(bookService.getBookById(id));
     }
@@ -43,6 +43,11 @@ public class BookController {
     public ResponseEntity<String> deleteBookById(@PathVariable("id")Long id){
         bookService.deleteAuthorById(id);
         return ResponseEntity.ok("ok");
+    }
+
+    @PutMapping
+    public ResponseEntity<Book> updateBook(@RequestBody Book book,@PathVariable("id)")Long id){
+        return ResponseEntity.ok(bookService.updateBook(id,book));
     }
 
 }
