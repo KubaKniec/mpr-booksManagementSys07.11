@@ -4,6 +4,7 @@ import com.sun.source.tree.OpensTree;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.edu.pjwstk.booksmpr.model.Author;
+import pl.edu.pjwstk.booksmpr.model.Book;
 import pl.edu.pjwstk.booksmpr.repository.AuthorRepository;
 
 import java.util.List;
@@ -29,6 +30,19 @@ public class AuthorService {
 
     public Author getAuthorById(Long id){
         return authorRepository.getReferenceById(id);
+    }
+
+    public Author updateAuthor(Long id, Author updatedAuthor){
+        Author authorToUpdate = authorRepository.getReferenceById(id);
+
+        if (updatedAuthor.getFirstName() != null){
+            authorToUpdate.setFirstName(updatedAuthor.getFirstName());
+        }
+
+        if (updatedAuthor.getLastName() != null){
+            authorToUpdate.setLastName(updatedAuthor.getLastName());
+        }
+        return authorRepository.save(authorToUpdate);
     }
 
     public Author findAuthorByNameAndLastName(String firstName, String lastName){
