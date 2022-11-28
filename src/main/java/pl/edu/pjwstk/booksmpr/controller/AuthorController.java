@@ -35,7 +35,7 @@ public class AuthorController {
     }
 
     //http://localhost:8081/author/get?id=2
-    @GetMapping("/get/")
+    @GetMapping("/get")
     public ResponseEntity<Author> getAuthorByIdRequestParam(@RequestParam(name = "id") Long id){
         return ResponseEntity.ok(authorService.getAuthorById(id));
     }

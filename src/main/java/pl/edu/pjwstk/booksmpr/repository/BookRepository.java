@@ -7,7 +7,6 @@ import pl.edu.pjwstk.booksmpr.repository.model.enums.BookType;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long> {
